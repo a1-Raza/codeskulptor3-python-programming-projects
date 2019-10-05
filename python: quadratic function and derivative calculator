@@ -1,0 +1,14 @@
+print("f(x) = ax**2 + bx + c\n")
+
+a = int(input("a: "))
+b = int(input("b: "))
+c = int(input("c: "))
+
+print("\nf(x) = " + str(a) + "x**2 + " + str(b) + "x + " + str(c))
+print("f'(x) = " + str(2*a) + "x + " + str(b) + "\n")
+
+x = int(input("x: "))
+
+print("\nf(x) = " + str(a*x**2 + b*x + c))
+
+print("f'(x) = " + str(2*a*x + b))
