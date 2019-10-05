@@ -7,7 +7,8 @@ b = float(input("Enter a value for 'b': "))
 c = float(input("Enter a value for 'c': "))
 
 
-'''if (a == 1):
+#when a is 1, "x^2" will print instead of "1.0x^2"
+if (a == 1):
   if (b < 0 and not c < 0):
     print("\nf(x) = " + "x^2 - " + str(math.fabs(b)) + "x + " + str(c))
   elif (c < 0 and not b < 0):
@@ -17,6 +18,7 @@ c = float(input("Enter a value for 'c': "))
   else:
     print("\nf(x) = " + "x^2 + " + str(math.fabs(b)) + "x + " + str(c))
 
+#when a is -1, "-x^2" will print instead of "-1.0x^2"
 elif (a == -1):
   if (b < 0 and not c < 0):
     print("\nf(x) = -" + "x^2 - " + str((math.fabs(b))) + "x + " + str(c))
@@ -27,6 +29,7 @@ elif (a == -1):
   else:
     print("\nf(x) = -" + "x^2 + " + str(math.fabs(b)) + "x + " + str(c))
 
+#when a is 0, ax^2 won't print
 elif (a == 0):
   if (b < 0 and not c < 0):
     print("\nf(x) = -" + str((math.fabs(b)) + "x + " + str(c)))
@@ -37,19 +40,19 @@ elif (a == 0):
   else:
     print("\nf(x) = " + str(math.fabs(b)) + "x + " + str(c))
 
-else:'''
-#if you want to use the part above, indent each line in the following "if" set
-if (b < 0 and not c < 0):
-  print("\nf(x) = " + str(a) + "x^2 - " + str((math.fabs(b))) + "x + " + str(c))
-elif (c < 0 and not b < 0):
-  print("\nf(x) = " + str(a) + "x^2 + " + str(b) + "x - " + str((math.fabs(c))))
-elif (b < 0 and c < 0):
-  print("\nf(x) = " + str(a) + "x^2 - " + str(math.fabs(b)) + "x - " + str((math.fabs(c))))
+#when none of the other "if a" conditions are true
 else:
-  print("\nf(x) = " + str(a) + "x^2 + " + str(math.fabs(b)) + "x + " + str(c))
+  if (b < 0 and not c < 0):
+    print("\nf(x) = " + str(a) + "x^2 - " + str((math.fabs(b))) + "x + " + str(c))
+  elif (c < 0 and not b < 0):
+    print("\nf(x) = " + str(a) + "x^2 + " + str(b) + "x - " + str((math.fabs(c))))
+  elif (b < 0 and c < 0):
+    print("\nf(x) = " + str(a) + "x^2 - " + str(math.fabs(b)) + "x - " + str((math.fabs(c))))
+  else:
+    print("\nf(x) = " + str(a) + "x^2 + " + str(math.fabs(b)) + "x + " + str(c))
 
 
-
+#for derivative function
 if (b < 0):
   print("f'(x) = " + str(2*a) + "x - " + str(math.fabs(b)) + "\n")
 elif (b == 0):
@@ -59,6 +62,8 @@ else:
 
 x = float(input("Enter a value for 'x': "))
 
+#prints answer for f(x)
 print("\nf(x) = " + str(a*x**2 + b*x + c))
 
+#prints answer for f'(x)
 print("f'(x) = " + str(2*a*x + b))
