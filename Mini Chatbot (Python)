@@ -1,0 +1,47 @@
+import random
+
+print("What is your name?")
+
+n = input("What is your name?")
+
+print("Hey " + n + ", nice to meet you!\n\nHow old are you?")
+
+age = int(input("How old are you?"))
+
+if (0 < age <= 10):
+    print("Ah, you are " + str(age) + ". You are quite a young programmer.")
+elif (10 < age <= 20):
+    print("So you are " + str(age) + ". I bet you are planning to become a software engineer!")
+elif (20 < age <= 100):
+    print("You are " + str(age) + ". I believe you are/were a software engineer.")
+else:
+    print("No, you're not " + str(age) + " years old.")
+
+print("\nAnyway, " + n + ", how was your day?")
+
+d = input("How was your day?")
+
+if (d == "bad" or d == "terrible"):
+    print("Oh. Okay, I hope this joke will cheer you up.\n\"Why do we tell actors to 'break a leg?' Because everyplay has a CAST!\"")
+elif (d == "good" or d == "great"):
+    print("That's nice to hear. Hope it stays that way!")
+else:
+    r = random.randint(1, 3)
+    if (r == 1):
+        print("That's nice.")
+    elif (r == 2):
+        print("That's interesting.")
+    else:
+        print("Ah. Okay.")
+
+print("\nOkay. Tell me something about yourself.")
+
+s = input("Tell me something.")
+
+print("That's a cool fact.\n\nSo are you going to go now?")
+
+g = input("Are you going to go?")
+if (g == "yes"):
+    print("Okay. See ya!")
+if (g == "no"):
+    print("Well, my code ends here. I hope you have a good day! See ya!")
