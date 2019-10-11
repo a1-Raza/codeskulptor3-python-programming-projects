@@ -1,0 +1,43 @@
+import simplegui
+
+face = "o_o"
+message = "What is 13*12?"
+attempts = 0
+
+def click1():
+    global face
+    global message
+    global attempts
+    face = ">_<"
+    message = "That's incorrect"
+    attempts = attempts + 1
+
+def click2():
+    global face
+    global message
+    global attempts
+    face = ">_<"
+    message = "That's not correct"
+    attempts = attempts + 1
+
+def click3():
+    global face
+    global message
+    global attempts
+    face = "^_^"
+    message = "You got it!"
+    attempts = attempts + 1
+
+def draw(canvas):
+    canvas.draw_text(face, [185, 250], 100, "White")
+    canvas.draw_text(message, [185, 100], 25, "White")
+    canvas.draw_text(str(attempts) + " attempt(s)", [350, 450], 25, "White")
+
+frame = simplegui.create_frame("Multiplication Quiz!", 500, 500)
+
+frame.add_button("169", click1)
+frame.add_button("144", click2)
+frame.add_button("156", click3)
+frame.set_draw_handler(draw)
+
+frame.start()
