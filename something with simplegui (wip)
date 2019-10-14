@@ -1,0 +1,44 @@
+#WIP
+
+import simplegui
+
+message = "Choose a Face:"
+face = "-_-   o_o   ^_^   >_<   *_*   $_$"
+sf = ""
+def click1():
+    global sf
+    sf = "-_-"
+def click2():
+    global sf
+    sf = "o_o"
+def click3():
+    global sf
+    sf = "^_^"
+def click4():
+    global sf
+    sf = ">_<"
+def click5():
+    global sf
+    sf = "*_*"
+def click6():
+    global sf
+    sf = "$_$"
+
+def draw(canvas):
+    canvas.draw_text(message, [75, 50], 25, "Black")
+    canvas.draw_text(face, [85, 75], 10, "Black")
+    canvas.draw_text(sf, [75, 200], 100, "Black")
+
+
+frame = simplegui.create_frame("F", 300, 300)
+
+frame.add_button("1", click1)
+frame.add_button("2", click2)
+frame.add_button("3", click3)
+frame.add_button("4", click4)
+frame.add_button("5", click5)
+frame.add_button("6", click6)
+frame.set_canvas_background("White")
+frame.set_draw_handler(draw)
+
+frame.start()
