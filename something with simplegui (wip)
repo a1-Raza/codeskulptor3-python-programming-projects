@@ -1,4 +1,5 @@
 #WIP
+#entire program creates user interface with some buttons so you can choose a face, still figuring out what else i'm going to add
 
 import simplegui
 
