@@ -1,0 +1,21 @@
+numOfTestCase_T = int(input("Enter the number of Test Cases"))
+
+c = 0
+
+if (0 <= numOfTestCase_T <= 20):
+    while (c < numOfTestCase_T):
+        c = c + 1
+        arrayLength_N = int(input("Enter the desired length of the array"))
+        if (3 <= arrayLength_N <= 262144):
+            #2^18 = 262144
+            array = int(input("Enter your array"))
+            if (len(str(array)) == arrayLength_N):
+                c1 = 0
+                urArrayAsString = str(array)
+                while (c1 < arrayLength_N):
+                    var = urArrayAsString[c1]
+                    if (var != "0"):
+                        print(var)
+                    c1 = c1 + 1
+                    if (c1 == arrayLength_N):
+                        print("\n")
