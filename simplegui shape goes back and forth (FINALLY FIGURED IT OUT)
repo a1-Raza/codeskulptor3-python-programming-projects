@@ -1,0 +1,23 @@
+import simplegui
+import time
+
+move = 200
+r0_or_l1 = 0
+
+def draw_handler(canvas):
+    global move
+    global r0_or_l1
+    canvas.draw_circle((move, 300), 50, 1, "Black", "Red")
+    if (r0_or_l1 == 0):
+        move = move + 1
+        if (move >= 400):
+            r0_or_l1 = 1
+    elif (r0_or_l1 == 1):
+        move = move - 1
+        if (move <= 200):
+            r0_or_l1 = 0
+
+frame = simplegui.create_frame("Testing", 600, 600)
+frame.set_canvas_background("White")
+frame.set_draw_handler(draw_handler)
+frame.start()
