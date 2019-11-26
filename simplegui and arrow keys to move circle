@@ -1,0 +1,40 @@
+import simplegui
+import time
+
+txt = "Waiting for Button Press..."
+btnPress = 0
+xpos = 250
+ypos = 250
+
+
+def draw_handler(canvas):
+    global txt
+    global btnPress
+    canvas.draw_text(txt, (10, 25), 25, "Red")
+    if (btnPress == 1):
+        canvas.draw_circle((xpos, ypos), 25, 1, "Red")
+
+def button_handler():
+    global txt
+    global btnPress
+    btnPress = 1
+    txt = "Button Pressed"
+
+def keydown_handler(key):
+    global xpos
+    global ypos
+    if key == simplegui.KEY_MAP['down']:
+        ypos = ypos + 10
+    elif key == simplegui.KEY_MAP['up']:
+        ypos = ypos - 10
+    elif key == simplegui.KEY_MAP['right']:
+        xpos = xpos + 10
+    elif key == simplegui.KEY_MAP['left']:
+        xpos = xpos - 10
+
+frame = simplegui.create_frame("Home", 500, 500)
+frame.set_keydown_handler(keydown_handler)
+frame.set_draw_handler(draw_handler)
+frame.add_button("1", button_handler)
+frame.set_canvas_background("White")
+frame.start()
