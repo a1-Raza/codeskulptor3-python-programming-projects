@@ -1,0 +1,30 @@
+import simplegui
+
+page_num = 1
+
+def page1(canvas):
+    canvas.draw_text("Page 1", (10,25), 25, "Black")
+    canvas.draw_circle((375, 250), 100, 5, "Red", "Blue")
+
+def page2(canvas):
+    canvas.draw_text("Page 2", (10, 25), 25, "Black")
+    canvas.draw_polygon([(475, 350), (475, 150), (275, 150), (275, 350)], 5, "Blue", "Red")
+
+def btn1():
+    global page_num
+    if (page_num != 1):
+        page_num = 1
+        frame.set_draw_handler(page1)
+        
+def btn2():
+    global page_num
+    if (page_num != 2):
+        page_num = 2
+        frame.set_draw_handler(page2)
+
+frame = simplegui.create_frame("Test", 750, 500)
+frame.set_canvas_background("White")
+frame.set_draw_handler(page1)
+frame.add_button("Page 1", btn1)
+frame.add_button("Page 2", btn2)
+frame.start()
