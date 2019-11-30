@@ -1,14 +1,18 @@
 import simplegui
 
 page_num = 1
+xpos_shp1 = 375
+ypos_shp1 = 250
+xpos_lt_corner2 = 275
+ypos_lt_corner2 = 150
 
 def page1(canvas):
-    canvas.draw_text("Page 1", (10,25), 25, "Black")
-    canvas.draw_circle((375, 250), 100, 5, "Red", "Blue")
+    canvas.draw_text("Page 1", (10, 25), 25, "Black")
+    canvas.draw_circle((xpos_shp1, ypos_shp1), 100, 5, "Red", "Blue")
 
 def page2(canvas):
     canvas.draw_text("Page 2", (10, 25), 25, "Black")
-    canvas.draw_polygon([(475, 350), (475, 150), (275, 150), (275, 350)], 5, "Blue", "Red")
+    canvas.draw_polygon([(xpos_lt_corner2 + 200, ypos_lt_corner2 + 200), (xpos_lt_corner2 + 200, ypos_lt_corner2), (xpos_lt_corner2, ypos_lt_corner2), (xpos_lt_corner2, ypos_lt_corner2 + 200)], 5, "Blue", "Red")
 
 def btn1():
     global page_num
@@ -22,9 +26,50 @@ def btn2():
         page_num = 2
         frame.set_draw_handler(page2)
 
+def btnR():
+    global xpos_shp1
+    global ypos_shp1
+    global xpos_lt_corner2
+    global ypos_lt_corner2
+    if (page_num == 1):
+        xpos_shp1 = 375
+        ypos_shp1 = 250
+    elif (page_num == 2):
+        xpos_lt_corner2 = 275
+        ypos_lt_corner2 = 150
+
+def keydown(key):
+    global xpos_shp1
+    global ypos_shp1
+    global xpos_lt_corner2
+    global ypos_lt_corner2
+    
+    if (page_num == 1):
+        if key == simplegui.KEY_MAP['down']:
+            ypos_shp1 = ypos_shp1 + 10
+        elif key == simplegui.KEY_MAP['up']:
+            ypos_shp1 = ypos_shp1 - 10
+        elif key == simplegui.KEY_MAP['right']:
+            xpos_shp1 = xpos_shp1 + 10
+        elif key == simplegui.KEY_MAP['left']:
+            xpos_shp1 = xpos_shp1 - 10
+    
+    elif (page_num == 2):
+        if key == simplegui.KEY_MAP['down']:
+            ypos_lt_corner2 = ypos_lt_corner2 + 10
+        elif key == simplegui.KEY_MAP['up']:
+            ypos_lt_corner2 = ypos_lt_corner2 - 10
+        elif key == simplegui.KEY_MAP['right']:
+            xpos_lt_corner2 = xpos_lt_corner2 + 10
+        elif key == simplegui.KEY_MAP['left']:
+            xpos_lt_corner2 = xpos_lt_corner2 - 10
+
+
 frame = simplegui.create_frame("Test", 750, 500)
 frame.set_canvas_background("White")
 frame.set_draw_handler(page1)
 frame.add_button("Page 1", btn1)
 frame.add_button("Page 2", btn2)
+frame.add_button("Refresh Page", btnR)
+frame.set_keydown_handler(keydown)
 frame.start()
