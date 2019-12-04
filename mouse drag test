@@ -1,0 +1,17 @@
+import simplegui
+
+circlecenter = [300, 300]
+
+def draw(canvas):
+    circle = canvas.draw_circle(circlecenter, 50, 1, "Black", "Green")
+
+def mouse(pos):
+    global circlecenter
+    circlecenter = pos
+    
+
+frame = simplegui.create_frame("Mouse Drag Test", 600, 600)
+frame.set_draw_handler(draw)
+frame.set_canvas_background("White")
+frame.set_mousedrag_handler(mouse)
+frame.start()
