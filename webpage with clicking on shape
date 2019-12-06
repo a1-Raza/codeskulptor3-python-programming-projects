@@ -1,0 +1,37 @@
+import simplegui
+import math
+
+page_num = 1
+xpos_shp1 = 375
+ypos_shp1 = 250
+xpos_lt_corner2 = 275
+ypos_lt_corner2 = 150
+
+#(375, 250)
+
+def distance(pt1, pt2):
+    return math.sqrt( (pt1[0] - pt2[0]) ** 2 + (pt1[1] - pt2[1]) ** 2)
+
+def click_PG1(pos):
+    if distance(pos, (xpos_shp1, ypos_shp1)) < 100:
+        frame.set_draw_handler(page2)
+        frame.set_mouseclick_handler(click_PG2)
+
+def click_PG2(pos):
+    if distance(pos, (xpos_lt_corner2 + 100, ypos_lt_corner2 + 100)) < 100:
+        frame.set_draw_handler(page1)
+        frame.set_mouseclick_handler(click_PG1)
+
+def page1(canvas):
+    canvas.draw_text("Page 1", (10, 25), 25, "Black")
+    canvas.draw_circle((xpos_shp1, ypos_shp1), 100, 5, "Red", "Blue")
+
+def page2(canvas):
+    canvas.draw_text("Page 2", (10, 25), 25, "Black")
+    canvas.draw_polygon([(xpos_lt_corner2 + 200, ypos_lt_corner2 + 200), (xpos_lt_corner2 + 200, ypos_lt_corner2), (xpos_lt_corner2, ypos_lt_corner2), (xpos_lt_corner2, ypos_lt_corner2 + 200)], 5, "Blue", "Red")
+
+frame = simplegui.create_frame("Test", 750, 500)
+frame.set_canvas_background("White")
+frame.set_draw_handler(page1)
+frame.set_mouseclick_handler(click_PG1)
+frame.start()
