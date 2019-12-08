@@ -1,0 +1,29 @@
+import simplegui
+
+center = [250, 250]
+color = "Gray"
+
+def distance():
+    return math.sqrt( (pt1[0] - pt2[0]) ** 2 + (pt1[1] - pt2[1]) ** 2)
+
+def click(pos):
+    global color
+    global center
+    if (distance(pos, center) < 75):
+        color = "White"
+    '''elif (distance(pos, center) < BALL_RADIUS) and (color == "White"):
+        color = "Gray"'''
+
+def drag(pos):
+    global center
+    center = pos
+
+def draw(canvas):
+    canvas.draw_circle(center, 75, 5, "Black", color)
+
+frame = simplegui.create_frame("Home", 500, 500)
+frame.set_canvas_background("White")
+frame.set_mouseclick_handler(click)
+frame.set_mousedrag_handler(drag)
+frame.set_draw_handler(draw)
+frame.start()
