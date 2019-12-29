@@ -1,0 +1,72 @@
+import simplegui
+import math
+
+pg1_menu_InfoBtnX = 250
+pg1_menu_InfoBtnY = 350
+
+pg1_menu_GameBtnX = 500
+pg1_menu_GameBtnY = 350
+
+pg2_info_BackBtnX = 35
+pg2_info_BackBtnY = 35
+
+def distance(pt1, pt2):
+    return math.sqrt( (pt1[0] - pt2[0]) ** 2 + (pt1[1] - pt2[1]) ** 2)
+
+
+def click_PG1_Info(pos):
+    if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
+        frame.set_draw_handler(pg2_info)
+        frame.set_mouseclick_handler(click_PG2_Back)
+
+def click_PG1_Game(pos):
+    if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
+        frame.set_draw_handler(pg2_info)
+        frame.set_mouseclick_handler(click_PG3_Back)
+
+def click_PG2_Back(pos):
+    if distance(pos, (pg2_info_BackBtnX, pg2_info_BackBtnY)) < 40:
+        frame.set_draw_handler(pg1_menu)
+        frame.set_mouseclick_handler(click_PG1_Info)
+
+def click_PG3_Back(pos):
+    if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
+        frame.set_draw_handler(pg1_menu)
+        frame.set_mouseclick_handler(click_PG1_Game)
+
+
+def pg1_menu(canvas):
+    canvas.draw_text("Welcome to The Business Smell!", (40,50), 50, "Green")
+    canvas.draw_text("Use the buttons to navigate between pages:", (160,250), 25, "Green")
+    
+    #info button
+    canvas.draw_circle((pg1_menu_InfoBtnX,pg1_menu_InfoBtnY), 20, 3, "Black", "Red")
+    canvas.draw_polygon([(250,370), (230,350), (250,330)], 1, "Black", "Black")
+    canvas.draw_text("Info", (230,400), 25, "Green")
+    
+    #game button
+    canvas.draw_circle((pg1_menu_GameBtnX,pg1_menu_GameBtnY), 20, 3, "Black", "Blue")
+    canvas.draw_polygon([(500,370), (520,350), (500,330)], 1, "Black", "Black")
+    canvas.draw_text("Game", (470,400), 25, "Green")
+
+
+def pg2_info(canvas):
+    canvas.draw_text("Info", (250, 250), 25, "Red")
+    
+    #back button
+    canvas.draw_circle((pg2_info_BackBtnX,pg2_info_BackBtnY), 20, 3, "Black", "Red")
+
+
+def pg3_game(canvas):
+    canvas.draw_text("Game", (250, 250), 25, "Blue")
+    
+    #back button
+    canvas.draw_circle((pg2_info_BackBtnX,pg2_info_BackBtnY), 20, 3, "Black", "Blue")
+
+frame = simplegui.create_frame("Home", 750, 500)
+frame.set_canvas_background("White")
+
+frame.set_mouseclick_handler(click_PG1_Info)
+frame.set_draw_handler(pg1_menu)
+
+frame.start()
