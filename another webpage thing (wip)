@@ -16,10 +16,20 @@ def distance(pt1, pt2):
 
 def click_PG1_Info(pos):
     if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
+        frame.set_mouseclick_handler(click_PG1_Info)
+    elif distance(pos, (pg1_menu_GameBtnX, pg1_menu_GameBtnX)) < 40:
+        frame.set_mouseclick_handler(click_PG1_Game)
+    
+    if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
         frame.set_draw_handler(pg2_info)
         frame.set_mouseclick_handler(click_PG2_Back)
 
 def click_PG1_Game(pos):
+    if distance(pos, (pg1_menu_GameBtnX, pg1_menu_GameBtnY)) < 40:
+        frame.set_mouseclick_handler(click_PG1_Game)
+    elif distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnX)) < 40:
+        frame.set_mouseclick_handler(click_PG1_Info)
+    
     if distance(pos, (pg1_menu_InfoBtnX, pg1_menu_InfoBtnY)) < 40:
         frame.set_draw_handler(pg2_info)
         frame.set_mouseclick_handler(click_PG3_Back)
